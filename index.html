@@ -1,443 +1,677 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Алексей Иванов — Веб-дизайнер</title>
-    
-    <!-- Шрифты и стили -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
-    
-    <style>
-        /* Общие стили */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #ffffff;
-            color: #1a1a1a;
-            line-height: 1.6;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Шапка */
-        header {
-            padding: 30px 0;
-            border-bottom: 1px solid #f0f0f0;
-        }
-        
-        .header-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            text-decoration: none;
-            color: #1a1a1a;
-        }
-        
-        .nav {
-            display: flex;
-            gap: 40px;
-        }
-        
-        .nav a {
-            text-decoration: none;
-            color: #4a4a4a;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        .nav a:hover {
-            color: #6c5ce7;
-        }
-        
-        .nav a.contact-btn {
-            background: #6c5ce7;
-            color: white;
-            padding: 10px 24px;
-            border-radius: 30px;
-            font-weight: 600;
-            transition: background 0.3s;
-        }
-        
-        .nav a.contact-btn:hover {
-            background: #5a4bd1;
-        }
-        
-        /* Герой-блок */
-        .hero {
-            padding: 100px 0 80px;
-        }
-        
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-        
-        .hero-content h1 {
-            font-size: 52px;
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 20px;
-        }
-        
-        .hero-content h1 span {
-            color: #6c5ce7;
-        }
-        
-        .hero-content p {
-            font-size: 18px;
-            color: #4a4a4a;
-            margin-bottom: 35px;
-            max-width: 480px;
-        }
-        
-        .btn-primary {
-            display: inline-block;
-            background: #6c5ce7;
-            color: white;
-            padding: 16px 40px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background 0.3s, transform 0.2s;
-        }
-        
-        .btn-primary:hover {
-            background: #5a4bd1;
-            transform: translateY(-2px);
-        }
-        
-        .hero-image {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .hero-placeholder {
-            width: 100%;
-            max-width: 480px;
-            aspect-ratio: 1 / 0.8;
-            background: #f0eeff;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #6c5ce7;
-            font-weight: 600;
-            font-size: 18px;
-            border: 2px dashed #d5ceff;
-        }
-        
-        /* Проекты */
-        .projects {
-            padding: 80px 0;
-        }
-        
-        .section-title {
-            font-size: 36px;
-            font-weight: 700;
-            margin-bottom: 50px;
-        }
-        
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-        
-        .project-card {
-            background: #f8f8f8;
-            border-radius: 16px;
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-        }
-        
-        .project-image {
-            height: 220px;
-            background: #eceaff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #6c5ce7;
-            font-weight: 500;
-            font-size: 14px;
-        }
-        
-        .project-info {
-            padding: 24px;
-        }
-        
-        .project-info h3 {
-            font-size: 20px;
-            margin-bottom: 8px;
-        }
-        
-        .project-info p {
-            color: #666;
-            font-size: 14px;
-            margin-bottom: 12px;
-        }
-        
-        .project-tag {
-            display: inline-block;
-            background: #e8e5ff;
-            color: #6c5ce7;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-        
-        /* Обо мне */
-        .about {
-            padding: 80px 0;
-            background: #fafafa;
-        }
-        
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-        
-        .about-content h2 {
-            font-size: 36px;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-        
-        .about-content p {
-            color: #4a4a4a;
-            margin-bottom: 20px;
-        }
-        
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 20px;
-        }
-        
-        .skill {
-            background: white;
-            padding: 8px 20px;
-            border-radius: 30px;
-            font-size: 14px;
-            font-weight: 500;
-            border: 1px solid #e5e5e5;
-        }
-        
-        /* Контакты */
-        .contact {
-            padding: 80px 0;
-            text-align: center;
-        }
-        
-        .contact h2 {
-            font-size: 36px;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-        
-        .contact p {
-            color: #4a4a4a;
-            margin-bottom: 30px;
-        }
-        
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-        
-        .contact-links a {
-            color: #1a1a1a;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        .contact-links a:hover {
-            color: #6c5ce7;
-        }
-        
-        /* Подвал */
-        footer {
-            padding: 30px 0;
-            border-top: 1px solid #f0f0f0;
-            text-align: center;
-            color: #999;
-            font-size: 14px;
-        }
-        
-        /* Адаптив */
-        @media (max-width: 900px) {
-            .hero-grid,
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            
-            .hero-content h1 {
-                font-size: 36px;
-            }
-            
-            .projects-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
-        @media (max-width: 600px) {
-            .header-inner {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .nav {
-                gap: 20px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .hero {
-                padding: 60px 0 40px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marriya — Портфолио</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-dark: #620000;
+    --text-dark: #300505;
+    --background: #efe5e5;
+    --white: #fefeff;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--white);
+    color: var(--text-dark);
+  }
+
+  a { text-decoration: none; color: inherit; }
+  button { font-family: inherit; border: none; background: none; cursor: pointer; }
+  img { display: block; max-width: 100%; }
+
+  .container {
+    padding-left: 150px;
+    padding-right: 150px;
+  }
+
+  @media (max-width: 1100px) {
+    .container { padding-left: 24px; padding-right: 24px; }
+  }
+
+  /* ---------- HEADER ---------- */
+  header.site-header {
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .logo {
+    font-weight: 800;
+    font-size: 24px;
+    color: #000;
+  }
+
+  .menu {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+
+  .menu-link {
+    font-weight: 400;
+    font-size: 16px;
+    color: #000;
+  }
+
+  .btn-contact {
+    background: var(--bg-dark);
+    color: #fff;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 10px 22px;
+    border-radius: 39px;
+  }
+
+  .lang-switch {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 16px;
+    color: var(--text-dark);
+    cursor: pointer;
+  }
+
+  .lang-switch span.active { text-decoration: underline; }
+
+  /* ---------- HERO ---------- */
+  .hero-section {
+    background: var(--background);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .hero-text {
+    flex: 1 1 480px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .hero-tag {
+    background: var(--bg-dark);
+    color: var(--background);
+    font-size: 16px;
+    padding: 5px 20px;
+    border-radius: 20px;
+  }
+
+  .hero-title {
+    font-weight: 800;
+    font-size: 56px;
+    line-height: 1.1;
+    color: var(--text-dark);
+  }
+
+  .hero-title .accent { color: #620000; }
+
+  .hero-desc {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.4;
+    color: var(--text-dark);
+    max-width: 560px;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    padding: 20px 0;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--bg-dark);
+    color: var(--background);
+    font-weight: 700;
+    font-size: 16px;
+    padding: 15px 25px;
+    border-radius: 39px;
+  }
+
+  .btn-outline {
+    border: 3px solid var(--bg-dark);
+    color: var(--bg-dark);
+    font-weight: 700;
+    font-size: 16px;
+    padding: 15px 25px;
+    border-radius: 40px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    min-width: 120px;
+  }
+
+  .stat-num {
+    font-weight: 800;
+    font-size: 56px;
+    color: var(--bg-dark);
+  }
+
+  .stat-label {
+    font-weight: 400;
+    font-size: 18px;
+    color: var(--text-dark);
+    text-align: center;
+  }
+
+  .hero-photo-wrap {
+    flex: 0 0 auto;
+    position: relative;
+    width: 462px;
+    height: 462px;
+    margin: 0 auto;
+  }
+
+  .hero-photo-ring {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 3px solid var(--text-dark);
+  }
+
+  .hero-photo-ring.r2 { transform: translate(-13px, 20px); }
+  .hero-photo-ring.r3 { transform: translate(13px, 40px); }
+
+  .hero-photo {
+    position: absolute;
+    top: 20px; left: 20px;
+    width: calc(100% - 40px);
+    height: calc(100% - 40px);
+    border-radius: 50%;
+    border: 3px solid var(--text-dark);
+    object-fit: cover;
+    z-index: 2;
+  }
+
+  .hero-deco {
+    position: absolute;
+    z-index: 1;
+  }
+
+  /* ---------- WORKS / PORTFOLIO ---------- */
+  .works-section {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .works-heading {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .works-eyebrow {
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--bg-dark);
+  }
+
+  .works-title {
+    font-weight: 700;
+    font-size: 44px;
+    color: var(--text-dark);
+  }
+
+  .filter-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+
+  .filter-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--text-dark);
+    opacity: .4;
+  }
+
+  .filter-btn {
+    border: 1px solid var(--text-dark);
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    background: var(--background);
+    color: var(--text-dark);
+  }
+
+  .filter-btn.active {
+    background: var(--bg-dark);
+    border-color: var(--text-dark);
+    color: var(--background);
+    font-weight: 600;
+    text-decoration: underline;
+  }
+
+  .work-item {
+    background: #d9d9d9;
+    height: 420px;
+    border-radius: 12px;
+    width: 100%;
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about-section {
+    background: var(--bg-dark);
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    flex-wrap: wrap;
+  }
+
+  .about-text {
+    flex: 1 1 480px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: var(--background);
+  }
+
+  .about-eyebrow { font-weight: 700; font-size: 20px; }
+  .about-title { font-weight: 800; font-size: 48px; }
+
+  .about-desc {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .about-block-title {
+    font-weight: 700;
+    font-size: 20px;
+  }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .tag {
+    border: 1px solid var(--background);
+    border-radius: 20px;
+    padding: 5px 10px;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--background);
+  }
+
+  .about-photo-wrap {
+    flex: 0 0 auto;
+    width: 400px;
+    height: 400px;
+    max-width: 100%;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .about-photo {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer.site-footer {
+    background: var(--text-dark);
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .footer-top {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    color: var(--background);
+    margin-bottom: 30px;
+  }
+
+  .footer-eyebrow { font-weight: 700; font-size: 20px; }
+  .footer-title { font-weight: 800; font-size: 40px; max-width: 700px; }
+  .footer-sub { font-weight: 400; font-size: 16px; }
+
+  .footer-grid {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .footer-contacts {
+    flex: 1 1 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .contact-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .contact-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(239,229,229,0.15);
+    flex-shrink: 0;
+  }
+
+  .contact-label {
+    font-size: 12px;
+    color: rgba(239,229,229,0.8);
+  }
+
+  .contact-value {
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--background);
+  }
+
+  .lang-box {
+    background: rgba(239,229,229,0.1);
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: var(--background);
+  }
+
+  .lang-box-title { font-weight: 700; font-size: 16px; }
+
+  .lang-row {
+    display: flex;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .footer-form {
+    flex: 1 1 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .form-field {
+    background: rgba(239,229,229,0.1);
+    border: 1px solid rgba(239,229,229,0.2);
+    border-radius: 20px;
+    padding: 20px;
+    color: #fff;
+    font-size: 14px;
+  }
+
+  .form-field.textarea { height: 141px; }
+
+  input.form-field, textarea.form-field {
+    width: 100%;
+    font-family: inherit;
+    outline: none;
+  }
+
+  textarea.form-field { resize: none; }
+
+  input.form-field::placeholder,
+  textarea.form-field::placeholder { color: #fff; opacity: 1; }
+
+  .btn-submit {
+    background: var(--background);
+    border: 1px solid rgba(239,229,229,0.2);
+    border-radius: 40px;
+    padding: 15px 20px;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--text-dark);
+    text-align: center;
+    cursor: pointer;
+  }
+</style>
 </head>
 <body>
-    <header>
-        <div class="container header-inner">
-            <a href="#" class="logo">Aleksey<span style="color: #6c5ce7;">.</span></a>
-            <nav class="nav">
-                <a href="#projects">Работы</a>
-                <a href="#about">Обо мне</a>
-                <a href="#contact" class="contact-btn">Связаться</a>
-            </nav>
+
+<header class="site-header container">
+  <div class="logo">Marriya</div>
+  <nav class="menu">
+    <a class="menu-link" href="#works">Проекты</a>
+    <a class="menu-link" href="#about">Обо мне</a>
+    <a class="btn-contact" href="#footer">Связаться</a>
+    <button class="lang-switch">
+      <span class="active">ru</span><span>/</span><span>eng</span>
+    </button>
+  </nav>
+</header>
+
+<section class="hero-section container">
+  <div class="hero-text">
+    <div class="hero-tag">Разработка цифровых продуктов</div>
+    <h1 class="hero-title">Привет, я <span class="accent">Мария</span><br>UX/UI Дизайнер</h1>
+    <p class="hero-desc">Создаю веб-приложения и бренды, которые запоминаются. Люблю сложные задачи и не боюсь экспериментировать</p>
+    <div class="hero-buttons">
+      <a class="btn-primary" href="#works">Смотреть работы</a>
+      <a class="btn-outline" href="#footer">Написать мне</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">4+</div><div class="stat-label">года в дизайне</div></div>
+      <div class="stat"><div class="stat-num">7+</div><div class="stat-label">интерфейсов</div></div>
+      <div class="stat"><div class="stat-num">15+</div><div class="stat-label">проектов</div></div>
+    </div>
+  </div>
+  <div class="hero-photo-wrap">
+    <div class="hero-photo-ring r2"></div>
+    <div class="hero-photo-ring r3"></div>
+    <img class="hero-photo" src="https://www.figma.com/api/mcp/asset/3d580db9-7c51-499f-9f31-db0ed71888be.png" alt="Мария">
+    <img class="hero-deco" style="width:50px; top:0; right:20px;" src="https://www.figma.com/api/mcp/asset/5e35a68a-90fd-442d-82ca-a4b3ef91962c.svg" alt="">
+    <img class="hero-deco" style="width:96px; top:0; right:60px;" src="https://www.figma.com/api/mcp/asset/aa7b4104-dcda-47bc-9674-f5d2bdac0e0d.svg" alt="">
+    <img class="hero-deco" style="width:50px; bottom:10px; left:60px;" src="https://www.figma.com/api/mcp/asset/5e35a68a-90fd-442d-82ca-a4b3ef91962c.svg" alt="">
+    <img class="hero-deco" style="width:96px; bottom:40px; left:0;" src="https://www.figma.com/api/mcp/asset/aa7b4104-dcda-47bc-9674-f5d2bdac0e0d.svg" alt="">
+  </div>
+</section>
+
+<section class="works-section container" id="works">
+  <div class="works-heading">
+    <div>
+      <div class="works-eyebrow">Портфолио</div>
+      <div class="works-title">Мои проекты</div>
+    </div>
+    <div class="filter-row">
+      <button class="filter-btn active">Веб-сайты</button>
+      <span class="filter-dot"></span>
+      <button class="filter-btn">Брендинг</button>
+      <span class="filter-dot"></span>
+      <button class="filter-btn">Игры</button>
+      <span class="filter-dot"></span>
+      <button class="filter-btn">Иллюстрации</button>
+    </div>
+  </div>
+
+  <div class="work-item"></div>
+  <div class="work-item"></div>
+
+  <div class="filter-row">
+    <button class="filter-btn">Веб-сайты</button>
+    <span class="filter-dot"></span>
+    <button class="filter-btn active">Брендинг</button>
+    <span class="filter-dot"></span>
+    <button class="filter-btn">Игры</button>
+    <span class="filter-dot"></span>
+    <button class="filter-btn">Иллюстрации</button>
+  </div>
+
+  <div class="work-item"></div>
+  <div class="work-item"></div>
+
+  <div class="filter-row">
+    <button class="filter-btn">Веб-сайты</button>
+    <span class="filter-dot"></span>
+    <button class="filter-btn">Брендинг</button>
+    <span class="filter-dot"></span>
+    <button class="filter-btn active">Игры</button>
+    <span class="filter-dot"></span>
+    <button class="filter-btn">Иллюстрации</button>
+  </div>
+
+  <div class="work-item"></div>
+  <div class="work-item"></div>
+
+  <div class="filter-row">
+    <button class="filter-btn">Веб-сайты</button>
+    <span class="filter-dot"></span>
+    <button class="filter-btn">Брендинг</button>
+    <span class="filter-dot"></span>
+    <button class="filter-btn">Игры</button>
+    <span class="filter-dot"></span>
+    <button class="filter-btn active">Иллюстрации</button>
+  </div>
+
+  <div class="work-item"></div>
+  <div class="work-item"></div>
+</section>
+
+<section class="about-section container" id="about">
+  <div class="about-text">
+    <div>
+      <div class="about-eyebrow">Обо мне</div>
+      <div class="about-title">UX/UI Дизайнер</div>
+    </div>
+    <p class="about-desc">
+      Я выбрала дизайн, потому что люблю создавать порядок из хаоса.<br><br>
+      За плечами 4+ года работы над проектами разного масштаба: от мобильных приложений до настольных игр и AR-плакатов.<br><br>
+      В работе ценю ясность, честность и вкус. Умею слушать и слышать — как клиентов, так и пользователей. В свободное время фотографирую и занимаюсь рукоделием, это помогает мне видеть красоту в деталях.
+    </p>
+    <div>
+      <div class="about-block-title">Навыки</div>
+      <div class="tag-row">
+        <span class="tag">Фотография</span>
+        <span class="tag">Верстка</span>
+        <span class="tag">UX/UI дизайн</span>
+        <span class="tag">Айдентика</span>
+        <span class="tag">Иллюстрации</span>
+        <span class="tag">Гайдлайны</span>
+        <span class="tag">Логотипы</span>
+        <span class="tag">3д моделирование</span>
+      </div>
+    </div>
+    <div>
+      <div class="about-block-title">Программы</div>
+      <div class="tag-row">
+        <span class="tag">Adobe Photoshop</span>
+        <span class="tag">Figma</span>
+        <span class="tag">Blender</span>
+        <span class="tag">Affinity</span>
+        <span class="tag">Procreate</span>
+        <span class="tag">Adobe Illustrator</span>
+        <span class="tag">Adobe After Effects</span>
+      </div>
+    </div>
+  </div>
+  <div class="about-photo-wrap">
+    <img class="about-photo" src="https://www.figma.com/api/mcp/asset/e4827f33-2020-46d5-a398-58c2e6691ae1.png" alt="Иллюстрация">
+  </div>
+</section>
+
+<footer class="site-footer container" id="footer">
+  <div class="footer-top">
+    <div class="footer-eyebrow">Связь</div>
+    <div class="footer-title">Давайте создадим что-то крутое вместе</div>
+    <div class="footer-sub">Пишите - всегда на связи</div>
+  </div>
+
+  <div class="footer-grid">
+    <div class="footer-contacts">
+      <div class="contact-row">
+        <div class="contact-icon"></div>
+        <div>
+          <div class="contact-label">Телефон</div>
+          <div class="contact-value">+7 924 626 56 75</div>
         </div>
-    </header>
-    
-    <main>
-        <!-- Герой -->
-        <section class="hero">
-            <div class="container hero-grid">
-                <div class="hero-content">
-                    <h1>Привет, я <span>Алексей</span><br>Веб-дизайнер</h1>
-                    <p>Создаю сайты, которые приносят результат. Лендинги, корпоративные сайты и интернет-магазины.</p>
-                    <a href="#projects" class="btn-primary">Смотреть работы</a>
-                </div>
-                <div class="hero-image">
-                    <div class="hero-placeholder">
-                        📸 Твоё фото или иллюстрация
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Проекты -->
-        <section id="projects" class="projects">
-            <div class="container">
-                <h2 class="section-title">Мои проекты</h2>
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <div class="project-image">🌐 Сайт студии</div>
-                        <div class="project-info">
-                            <h3>Студия «Модерн»</h3>
-                            <p>Дизайн корпоративного сайта для архитектурного бюро</p>
-                            <span class="project-tag">Корпоративный</span>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-image">📱 Доставка</div>
-                        <div class="project-info">
-                            <h3>ЕдаМаркет</h3>
-                            <p>Лендинг для сервиса доставки здоровой еды</p>
-                            <span class="project-tag">Лендинг</span>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-image">🛒 Магазин</div>
-                        <div class="project-info">
-                            <h3>WoodCraft</h3>
-                            <p>Интернет-магазин мебели ручной работы</p>
-                            <span class="project-tag">E-commerce</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Обо мне -->
-        <section id="about" class="about">
-            <div class="container about-grid">
-                <div class="about-content">
-                    <h2>Обо мне</h2>
-                    <p>Привет! Я Алексей, веб-дизайнер с 4-летним опытом. Помогаю бизнесам создавать стильные и продающие сайты.</p>
-                    <p>Мой подход — совмещать красивый визуал с удобством для пользователя.</p>
-                    <div class="skills">
-                        <span class="skill">Figma</span>
-                        <span class="skill">Tilda</span>
-                        <span class="skill">Webflow</span>
-                        <span class="skill">Photoshop</span>
-                        <span class="skill">HTML/CSS</span>
-                        <span class="skill">UI/UX</span>
-                    </div>
-                </div>
-                <div style="background: #f0eeff; border-radius: 20px; padding: 40px; text-align: center; color: #6c5ce7; font-weight: 500; min-height: 200px; display: flex; align-items: center; justify-content: center;">
-                    📷 Фото или аватар
-                </div>
-            </div>
-        </section>
-        
-        <!-- Контакты -->
-        <section id="contact" class="contact">
-            <div class="container">
-                <h2>Давайте работать вместе</h2>
-                <p>Пишите, я всегда на связи 📬</p>
-                <div class="contact-links">
-                    <a href="mailto:aleksey@example.com">✉️ aleksey@example.com</a>
-                    <a href="#">📱 Telegram</a>
-                    <a href="#">📱 WhatsApp</a>
-                    <a href="#">💼 Behance</a>
-                </div>
-            </div>
-        </section>
-    </main>
-    
-    <footer>
-        <div class="container">
-            <p>© 2026 Алексей Иванов. Сделано с ❤️</p>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon"></div>
+        <div>
+          <div class="contact-label">E-mail</div>
+          <div class="contact-value">bmariyav2005@mail.ru</div>
         </div>
-    </footer>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon"></div>
+        <div>
+          <div class="contact-label">VK</div>
+          <div class="contact-value">vk.ru/marrriya_18</div>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon"></div>
+        <div>
+          <div class="contact-label">Telegram</div>
+          <div class="contact-value">@marrriya18</div>
+        </div>
+      </div>
+
+      <div class="lang-box">
+        <div class="lang-box-title">Языки</div>
+        <div class="lang-row"><span>Русский</span><span>родной</span></div>
+        <div class="lang-row"><span>Английский</span><span>B1-B2</span></div>
+        <div class="lang-row"><span>Итальянский</span><span>A1-A2</span></div>
+      </div>
+    </div>
+
+    <form class="footer-form">
+      <input class="form-field" type="text" placeholder="Ваше имя">
+      <input class="form-field" type="email" placeholder="Ваш email">
+      <input class="form-field" type="text" placeholder="Тема проекта">
+      <textarea class="form-field textarea" placeholder="Расскажите о вашем проекте..."></textarea>
+      <button class="btn-submit" type="submit">Отправить сообщение</button>
+    </form>
+  </div>
+</footer>
+
 </body>
 </html>
