@@ -1,677 +1,233 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Marriya — Портфолио</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg-dark: #620000;
-    --text-dark: #300505;
-    --background: #efe5e5;
-    --white: #fefeff;
-  }
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    font-family: 'Montserrat', sans-serif;
-    background: var(--white);
-    color: var(--text-dark);
-  }
-
-  a { text-decoration: none; color: inherit; }
-  button { font-family: inherit; border: none; background: none; cursor: pointer; }
-  img { display: block; max-width: 100%; }
-
-  .container {
-    padding-left: 150px;
-    padding-right: 150px;
-  }
-
-  @media (max-width: 1100px) {
-    .container { padding-left: 24px; padding-right: 24px; }
-  }
-
-  /* ---------- HEADER ---------- */
-  header.site-header {
-    background: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-
-  .logo {
-    font-weight: 800;
-    font-size: 24px;
-    color: #000;
-  }
-
-  .menu {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    flex-wrap: wrap;
-  }
-
-  .menu-link {
-    font-weight: 400;
-    font-size: 16px;
-    color: #000;
-  }
-
-  .btn-contact {
-    background: var(--bg-dark);
-    color: #fff;
-    font-weight: 700;
-    font-size: 16px;
-    padding: 10px 22px;
-    border-radius: 39px;
-  }
-
-  .lang-switch {
-    display: flex;
-    align-items: center;
-    gap: 3px;
-    font-size: 16px;
-    color: var(--text-dark);
-    cursor: pointer;
-  }
-
-  .lang-switch span.active { text-decoration: underline; }
-
-  /* ---------- HERO ---------- */
-  .hero-section {
-    background: var(--background);
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 40px;
-    padding-top: 40px;
-    padding-bottom: 40px;
-  }
-
-  .hero-text {
-    flex: 1 1 480px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: flex-start;
-  }
-
-  .hero-tag {
-    background: var(--bg-dark);
-    color: var(--background);
-    font-size: 16px;
-    padding: 5px 20px;
-    border-radius: 20px;
-  }
-
-  .hero-title {
-    font-weight: 800;
-    font-size: 56px;
-    line-height: 1.1;
-    color: var(--text-dark);
-  }
-
-  .hero-title .accent { color: #620000; }
-
-  .hero-desc {
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 1.4;
-    color: var(--text-dark);
-    max-width: 560px;
-  }
-
-  .hero-buttons {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    padding: 20px 0;
-    flex-wrap: wrap;
-  }
-
-  .btn-primary {
-    background: var(--bg-dark);
-    color: var(--background);
-    font-weight: 700;
-    font-size: 16px;
-    padding: 15px 25px;
-    border-radius: 39px;
-  }
-
-  .btn-outline {
-    border: 3px solid var(--bg-dark);
-    color: var(--bg-dark);
-    font-weight: 700;
-    font-size: 16px;
-    padding: 15px 25px;
-    border-radius: 40px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-  }
-
-  .hero-stats {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-
-  .stat {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    min-width: 120px;
-  }
-
-  .stat-num {
-    font-weight: 800;
-    font-size: 56px;
-    color: var(--bg-dark);
-  }
-
-  .stat-label {
-    font-weight: 400;
-    font-size: 18px;
-    color: var(--text-dark);
-    text-align: center;
-  }
-
-  .hero-photo-wrap {
-    flex: 0 0 auto;
-    position: relative;
-    width: 462px;
-    height: 462px;
-    margin: 0 auto;
-  }
-
-  .hero-photo-ring {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    border: 3px solid var(--text-dark);
-  }
-
-  .hero-photo-ring.r2 { transform: translate(-13px, 20px); }
-  .hero-photo-ring.r3 { transform: translate(13px, 40px); }
-
-  .hero-photo {
-    position: absolute;
-    top: 20px; left: 20px;
-    width: calc(100% - 40px);
-    height: calc(100% - 40px);
-    border-radius: 50%;
-    border: 3px solid var(--text-dark);
-    object-fit: cover;
-    z-index: 2;
-  }
-
-  .hero-deco {
-    position: absolute;
-    z-index: 1;
-  }
-
-  /* ---------- WORKS / PORTFOLIO ---------- */
-  .works-section {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    padding-top: 40px;
-    padding-bottom: 40px;
-  }
-
-  .works-heading {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .works-eyebrow {
-    font-weight: 700;
-    font-size: 20px;
-    color: var(--bg-dark);
-  }
-
-  .works-title {
-    font-weight: 700;
-    font-size: 44px;
-    color: var(--text-dark);
-  }
-
-  .filter-row {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    flex-wrap: wrap;
-    margin-top: 10px;
-  }
-
-  .filter-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--text-dark);
-    opacity: .4;
-  }
-
-  .filter-btn {
-    border: 1px solid var(--text-dark);
-    border-radius: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: 500;
-    background: var(--background);
-    color: var(--text-dark);
-  }
-
-  .filter-btn.active {
-    background: var(--bg-dark);
-    border-color: var(--text-dark);
-    color: var(--background);
-    font-weight: 600;
-    text-decoration: underline;
-  }
-
-  .work-item {
-    background: #d9d9d9;
-    height: 420px;
-    border-radius: 12px;
-    width: 100%;
-  }
-
-  /* ---------- ABOUT ---------- */
-  .about-section {
-    background: var(--bg-dark);
-    display: flex;
-    gap: 40px;
-    align-items: center;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    flex-wrap: wrap;
-  }
-
-  .about-text {
-    flex: 1 1 480px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    color: var(--background);
-  }
-
-  .about-eyebrow { font-weight: 700; font-size: 20px; }
-  .about-title { font-weight: 800; font-size: 48px; }
-
-  .about-desc {
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.6;
-  }
-
-  .about-block-title {
-    font-weight: 700;
-    font-size: 20px;
-  }
-
-  .tag-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 20px;
-  }
-
-  .tag {
-    border: 1px solid var(--background);
-    border-radius: 20px;
-    padding: 5px 10px;
-    font-size: 16px;
-    font-weight: 400;
-    color: var(--background);
-  }
-
-  .about-photo-wrap {
-    flex: 0 0 auto;
-    width: 400px;
-    height: 400px;
-    max-width: 100%;
-    margin: 0 auto;
-    position: relative;
-  }
-
-  .about-photo {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-
-  /* ---------- FOOTER ---------- */
-  footer.site-footer {
-    background: var(--text-dark);
-    padding-top: 40px;
-    padding-bottom: 40px;
-  }
-
-  .footer-top {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    color: var(--background);
-    margin-bottom: 30px;
-  }
-
-  .footer-eyebrow { font-weight: 700; font-size: 20px; }
-  .footer-title { font-weight: 800; font-size: 40px; max-width: 700px; }
-  .footer-sub { font-weight: 400; font-size: 16px; }
-
-  .footer-grid {
-    display: flex;
-    gap: 40px;
-    flex-wrap: wrap;
-  }
-
-  .footer-contacts {
-    flex: 1 1 320px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .contact-row {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-  }
-
-  .contact-icon {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: rgba(239,229,229,0.15);
-    flex-shrink: 0;
-  }
-
-  .contact-label {
-    font-size: 12px;
-    color: rgba(239,229,229,0.8);
-  }
-
-  .contact-value {
-    font-weight: 700;
-    font-size: 16px;
-    color: var(--background);
-  }
-
-  .lang-box {
-    background: rgba(239,229,229,0.1);
-    border-radius: 20px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    color: var(--background);
-  }
-
-  .lang-box-title { font-weight: 700; font-size: 16px; }
-
-  .lang-row {
-    display: flex;
-    gap: 10px;
-    font-size: 14px;
-    font-weight: 400;
-  }
-
-  .footer-form {
-    flex: 1 1 320px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    justify-content: center;
-  }
-
-  .form-field {
-    background: rgba(239,229,229,0.1);
-    border: 1px solid rgba(239,229,229,0.2);
-    border-radius: 20px;
-    padding: 20px;
-    color: #fff;
-    font-size: 14px;
-  }
-
-  .form-field.textarea { height: 141px; }
-
-  input.form-field, textarea.form-field {
-    width: 100%;
-    font-family: inherit;
-    outline: none;
-  }
-
-  textarea.form-field { resize: none; }
-
-  input.form-field::placeholder,
-  textarea.form-field::placeholder { color: #fff; opacity: 1; }
-
-  .btn-submit {
-    background: var(--background);
-    border: 1px solid rgba(239,229,229,0.2);
-    border-radius: 40px;
-    padding: 15px 20px;
-    font-weight: 700;
-    font-size: 16px;
-    color: var(--text-dark);
-    text-align: center;
-    cursor: pointer;
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marriya — Портфолио</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
+<!-- ===== HEADER ===== -->
 <header class="site-header container">
-  <div class="logo">Marriya</div>
-  <nav class="menu">
-    <a class="menu-link" href="#works">Проекты</a>
-    <a class="menu-link" href="#about">Обо мне</a>
-    <a class="btn-contact" href="#footer">Связаться</a>
-    <button class="lang-switch">
-      <span class="active">ru</span><span>/</span><span>eng</span>
-    </button>
-  </nav>
+    <div class="logo">Marriya</div>
+    <nav class="menu">
+        <a class="menu-link" href="#works" data-i18n="nav.works">Проекты</a>
+        <a class="menu-link" href="#about" data-i18n="nav.about">Обо мне</a>
+        <a class="btn-contact" href="#footer" data-i18n="nav.contact">Связаться</a>
+        <button class="lang-switch" id="langSwitch">
+            <span class="active" data-lang="ru">ru</span>
+            <span>/</span>
+            <span data-lang="en">en</span>
+        </button>
+    </nav>
 </header>
 
+<!-- ===== HERO ===== -->
 <section class="hero-section container">
-  <div class="hero-text">
-    <div class="hero-tag">Разработка цифровых продуктов</div>
-    <h1 class="hero-title">Привет, я <span class="accent">Мария</span><br>UX/UI Дизайнер</h1>
-    <p class="hero-desc">Создаю веб-приложения и бренды, которые запоминаются. Люблю сложные задачи и не боюсь экспериментировать</p>
-    <div class="hero-buttons">
-      <a class="btn-primary" href="#works">Смотреть работы</a>
-      <a class="btn-outline" href="#footer">Написать мне</a>
+    <div class="hero-text">
+        <div class="hero-tag" data-i18n="hero.tag">Разработка цифровых продуктов</div>
+        <h1 class="hero-title" data-i18n="hero.title">Привет, я <span class="accent">Мария</span><br>UX/UI Дизайнер</h1>
+        <p class="hero-desc" data-i18n="hero.desc">Создаю веб-приложения и бренды, которые запоминаются. Люблю сложные задачи и не боюсь экспериментировать</p>
+        <div class="hero-buttons">
+            <a class="btn-primary" href="#works" data-i18n="hero.btn_works">Смотреть работы</a>
+            <a class="btn-outline" href="#footer" data-i18n="hero.btn_contact">Написать мне</a>
+        </div>
+        <div class="hero-stats">
+            <div class="stat"><div class="stat-num" data-count="4">4+</div><div class="stat-label" data-i18n="hero.stat1">года в дизайне</div></div>
+            <div class="stat"><div class="stat-num" data-count="7">7+</div><div class="stat-label" data-i18n="hero.stat2">интерфейсов</div></div>
+            <div class="stat"><div class="stat-num" data-count="15">15+</div><div class="stat-label" data-i18n="hero.stat3">проектов</div></div>
+        </div>
     </div>
-    <div class="hero-stats">
-      <div class="stat"><div class="stat-num">4+</div><div class="stat-label">года в дизайне</div></div>
-      <div class="stat"><div class="stat-num">7+</div><div class="stat-label">интерфейсов</div></div>
-      <div class="stat"><div class="stat-num">15+</div><div class="stat-label">проектов</div></div>
+    <div class="hero-photo-wrap">
+        <div class="hero-photo-ring r2"></div>
+        <div class="hero-photo-ring r3"></div>
+        
+        <!-- Звёздочки ПОВЕРХ фото -->
+        <img class="hero-deco star1" src="https://www.figma.com/api/mcp/asset/5e35a68a-90fd-442d-82ca-a4b3ef91962c.svg" alt="">
+        <img class="hero-deco star2" src="https://www.figma.com/api/mcp/asset/aa7b4104-dcda-47bc-9674-f5d2bdac0e0d.svg" alt="">
+        <img class="hero-deco star3" src="https://www.figma.com/api/mcp/asset/5e35a68a-90fd-442d-82ca-a4b3ef91962c.svg" alt="">
+        <img class="hero-deco star4" src="https://www.figma.com/api/mcp/asset/aa7b4104-dcda-47bc-9674-f5d2bdac0e0d.svg" alt="">
+        
+        <img class="hero-photo" src="https://www.figma.com/api/mcp/asset/3d580db9-7c51-499f-9f31-db0ed71888be.png" alt="Мария">
     </div>
-  </div>
-  <div class="hero-photo-wrap">
-    <div class="hero-photo-ring r2"></div>
-    <div class="hero-photo-ring r3"></div>
-    <img class="hero-photo" src="https://www.figma.com/api/mcp/asset/3d580db9-7c51-499f-9f31-db0ed71888be.png" alt="Мария">
-    <img class="hero-deco" style="width:50px; top:0; right:20px;" src="https://www.figma.com/api/mcp/asset/5e35a68a-90fd-442d-82ca-a4b3ef91962c.svg" alt="">
-    <img class="hero-deco" style="width:96px; top:0; right:60px;" src="https://www.figma.com/api/mcp/asset/aa7b4104-dcda-47bc-9674-f5d2bdac0e0d.svg" alt="">
-    <img class="hero-deco" style="width:50px; bottom:10px; left:60px;" src="https://www.figma.com/api/mcp/asset/5e35a68a-90fd-442d-82ca-a4b3ef91962c.svg" alt="">
-    <img class="hero-deco" style="width:96px; bottom:40px; left:0;" src="https://www.figma.com/api/mcp/asset/aa7b4104-dcda-47bc-9674-f5d2bdac0e0d.svg" alt="">
-  </div>
 </section>
 
-<section class="works-section container" id="works">
-  <div class="works-heading">
-    <div>
-      <div class="works-eyebrow">Портфолио</div>
-      <div class="works-title">Мои проекты</div>
+<!-- ===== PROJECTS ===== -->
+<section class="works-section" id="works">
+    <div class="container">
+        <div class="works-heading">
+            <div>
+                <div class="works-eyebrow" data-i18n="works.eyebrow">Портфолио</div>
+                <div class="works-title" data-i18n="works.title">Мои проекты</div>
+            </div>
+        </div>
+
+        <!-- Фильтры — растянуты на всю ширину -->
+        <div class="filter-row" data-filter-group="1">
+            <button class="filter-btn active" data-filter="all" data-i18n="works.filter_all">Все</button>
+            <span class="filter-dot"></span>
+            <button class="filter-btn" data-filter="web" data-i18n="works.filter_web">Веб-сайты</button>
+            <span class="filter-dot"></span>
+            <button class="filter-btn" data-filter="branding" data-i18n="works.filter_branding">Брендинг</button>
+            <span class="filter-dot"></span>
+            <button class="filter-btn" data-filter="games" data-i18n="works.filter_games">Игры</button>
+            <span class="filter-dot"></span>
+            <button class="filter-btn" data-filter="illustration" data-i18n="works.filter_illustration">Иллюстрации</button>
+        </div>
     </div>
-    <div class="filter-row">
-      <button class="filter-btn active">Веб-сайты</button>
-      <span class="filter-dot"></span>
-      <button class="filter-btn">Брендинг</button>
-      <span class="filter-dot"></span>
-      <button class="filter-btn">Игры</button>
-      <span class="filter-dot"></span>
-      <button class="filter-btn">Иллюстрации</button>
+
+    <!-- Сетка проектов — на всю ширину -->
+    <div class="works-grid-full">
+        <div class="works-grid container">
+            <div class="work-item" data-category="web">
+                <div class="work-placeholder">🌐 Веб-сайт</div>
+            </div>
+            <div class="work-item" data-category="branding">
+                <div class="work-placeholder">🎨 Брендинг</div>
+            </div>
+            <div class="work-item" data-category="games">
+                <div class="work-placeholder">🎮 Игра</div>
+            </div>
+            <div class="work-item" data-category="illustration">
+                <div class="work-placeholder">🖌️ Иллюстрация</div>
+            </div>
+            <div class="work-item" data-category="web">
+                <div class="work-placeholder">🌐 Веб-сайт</div>
+            </div>
+            <div class="work-item" data-category="branding">
+                <div class="work-placeholder">🎨 Брендинг</div>
+            </div>
+            <div class="work-item" data-category="games">
+                <div class="work-placeholder">🎮 Игра</div>
+            </div>
+            <div class="work-item" data-category="illustration">
+                <div class="work-placeholder">🖌️ Иллюстрация</div>
+            </div>
+            <div class="work-item" data-category="web">
+                <div class="work-placeholder">🌐 Веб-сайт</div>
+            </div>
+        </div>
     </div>
-  </div>
-
-  <div class="work-item"></div>
-  <div class="work-item"></div>
-
-  <div class="filter-row">
-    <button class="filter-btn">Веб-сайты</button>
-    <span class="filter-dot"></span>
-    <button class="filter-btn active">Брендинг</button>
-    <span class="filter-dot"></span>
-    <button class="filter-btn">Игры</button>
-    <span class="filter-dot"></span>
-    <button class="filter-btn">Иллюстрации</button>
-  </div>
-
-  <div class="work-item"></div>
-  <div class="work-item"></div>
-
-  <div class="filter-row">
-    <button class="filter-btn">Веб-сайты</button>
-    <span class="filter-dot"></span>
-    <button class="filter-btn">Брендинг</button>
-    <span class="filter-dot"></span>
-    <button class="filter-btn active">Игры</button>
-    <span class="filter-dot"></span>
-    <button class="filter-btn">Иллюстрации</button>
-  </div>
-
-  <div class="work-item"></div>
-  <div class="work-item"></div>
-
-  <div class="filter-row">
-    <button class="filter-btn">Веб-сайты</button>
-    <span class="filter-dot"></span>
-    <button class="filter-btn">Брендинг</button>
-    <span class="filter-dot"></span>
-    <button class="filter-btn">Игры</button>
-    <span class="filter-dot"></span>
-    <button class="filter-btn active">Иллюстрации</button>
-  </div>
-
-  <div class="work-item"></div>
-  <div class="work-item"></div>
 </section>
 
-<section class="about-section container" id="about">
-  <div class="about-text">
-    <div>
-      <div class="about-eyebrow">Обо мне</div>
-      <div class="about-title">UX/UI Дизайнер</div>
+<!-- ===== ABOUT ===== -->
+<section class="about-section" id="about">
+    <div class="container about-inner">
+        <div class="about-text">
+            <div>
+                <div class="about-eyebrow" data-i18n="about.eyebrow">Обо мне</div>
+                <div class="about-title" data-i18n="about.title">UX/UI Дизайнер</div>
+            </div>
+            <p class="about-desc" data-i18n="about.desc">
+                Я выбрала дизайн, потому что люблю создавать порядок из хаоса.<br><br>
+                За плечами 4+ года работы над проектами разного масштаба: от мобильных приложений до настольных игр и AR-плакатов для института РАН.<br><br>
+                В работе ценю ясность, честность и вкус. Умею слушать и слышать — как клиентов, так и пользователей. В свободное время фотографирую и занимаюсь рукоделием, это помогает мне видеть красоту в деталях.
+            </p>
+            <div>
+                <div class="about-block-title" data-i18n="about.skills_title">Навыки</div>
+                <div class="tag-row">
+                    <span class="tag" data-i18n="about.skill1">Фотография</span>
+                    <span class="tag" data-i18n="about.skill2">Верстка</span>
+                    <span class="tag" data-i18n="about.skill3">UX/UI дизайн</span>
+                    <span class="tag" data-i18n="about.skill4">Айдентика</span>
+                    <span class="tag" data-i18n="about.skill5">Иллюстрации</span>
+                    <span class="tag" data-i18n="about.skill6">Гайдлайны</span>
+                    <span class="tag" data-i18n="about.skill7">Логотипы</span>
+                    <span class="tag" data-i18n="about.skill8">3D моделирование</span>
+                </div>
+            </div>
+            <div>
+                <div class="about-block-title" data-i18n="about.tools_title">Программы</div>
+                <div class="tag-row">
+                    <span class="tag">Adobe Photoshop</span>
+                    <span class="tag">Figma</span>
+                    <span class="tag">Blender</span>
+                    <span class="tag">Affinity</span>
+                    <span class="tag">Procreate</span>
+                    <span class="tag">Adobe Illustrator</span>
+                    <span class="tag">Adobe After Effects</span>
+                </div>
+            </div>
+        </div>
+        <div class="about-photo-wrap">
+            <!-- Звёздочки вокруг картинки -->
+            <img class="about-deco star1" src="https://www.figma.com/api/mcp/asset/5e35a68a-90fd-442d-82ca-a4b3ef91962c.svg" alt="">
+            <img class="about-deco star2" src="https://www.figma.com/api/mcp/asset/aa7b4104-dcda-47bc-9674-f5d2bdac0e0d.svg" alt="">
+            <img class="about-deco star3" src="https://www.figma.com/api/mcp/asset/5e35a68a-90fd-442d-82ca-a4b3ef91962c.svg" alt="">
+            <img class="about-deco star4" src="https://www.figma.com/api/mcp/asset/aa7b4104-dcda-47bc-9674-f5d2bdac0e0d.svg" alt="">
+            
+            <!-- Картинка без круга, просто обрезанная -->
+            <img class="about-photo" src="https://www.figma.com/api/mcp/asset/e4827f33-2020-46d5-a398-58c2e6691ae1.png" alt="Иллюстрация">
+        </div>
     </div>
-    <p class="about-desc">
-      Я выбрала дизайн, потому что люблю создавать порядок из хаоса.<br><br>
-      За плечами 4+ года работы над проектами разного масштаба: от мобильных приложений до настольных игр и AR-плакатов.<br><br>
-      В работе ценю ясность, честность и вкус. Умею слушать и слышать — как клиентов, так и пользователей. В свободное время фотографирую и занимаюсь рукоделием, это помогает мне видеть красоту в деталях.
-    </p>
-    <div>
-      <div class="about-block-title">Навыки</div>
-      <div class="tag-row">
-        <span class="tag">Фотография</span>
-        <span class="tag">Верстка</span>
-        <span class="tag">UX/UI дизайн</span>
-        <span class="tag">Айдентика</span>
-        <span class="tag">Иллюстрации</span>
-        <span class="tag">Гайдлайны</span>
-        <span class="tag">Логотипы</span>
-        <span class="tag">3д моделирование</span>
-      </div>
-    </div>
-    <div>
-      <div class="about-block-title">Программы</div>
-      <div class="tag-row">
-        <span class="tag">Adobe Photoshop</span>
-        <span class="tag">Figma</span>
-        <span class="tag">Blender</span>
-        <span class="tag">Affinity</span>
-        <span class="tag">Procreate</span>
-        <span class="tag">Adobe Illustrator</span>
-        <span class="tag">Adobe After Effects</span>
-      </div>
-    </div>
-  </div>
-  <div class="about-photo-wrap">
-    <img class="about-photo" src="https://www.figma.com/api/mcp/asset/e4827f33-2020-46d5-a398-58c2e6691ae1.png" alt="Иллюстрация">
-  </div>
 </section>
 
-<footer class="site-footer container" id="footer">
-  <div class="footer-top">
-    <div class="footer-eyebrow">Связь</div>
-    <div class="footer-title">Давайте создадим что-то крутое вместе</div>
-    <div class="footer-sub">Пишите - всегда на связи</div>
-  </div>
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer" id="footer">
+    <div class="container">
+        <div class="footer-top">
+            <div class="footer-eyebrow" data-i18n="footer.eyebrow">Связь</div>
+            <div class="footer-title" data-i18n="footer.title">Давайте создадим что-то крутое вместе</div>
+            <div class="footer-sub" data-i18n="footer.sub">Пишите — всегда на связи</div>
+        </div>
 
-  <div class="footer-grid">
-    <div class="footer-contacts">
-      <div class="contact-row">
-        <div class="contact-icon"></div>
-        <div>
-          <div class="contact-label">Телефон</div>
-          <div class="contact-value">+7 924 626 56 75</div>
-        </div>
-      </div>
-      <div class="contact-row">
-        <div class="contact-icon"></div>
-        <div>
-          <div class="contact-label">E-mail</div>
-          <div class="contact-value">bmariyav2005@mail.ru</div>
-        </div>
-      </div>
-      <div class="contact-row">
-        <div class="contact-icon"></div>
-        <div>
-          <div class="contact-label">VK</div>
-          <div class="contact-value">vk.ru/marrriya_18</div>
-        </div>
-      </div>
-      <div class="contact-row">
-        <div class="contact-icon"></div>
-        <div>
-          <div class="contact-label">Telegram</div>
-          <div class="contact-value">@marrriya18</div>
-        </div>
-      </div>
+        <div class="footer-grid">
+            <div class="footer-contacts">
+                <!-- ЗВЁЗДОЧКИ вместо иконок -->
+                <div class="contact-row">
+                    <div class="contact-icon star-icon">✦</div>
+                    <div>
+                        <div class="contact-label" data-i18n="footer.phone_label">Телефон</div>
+                        <div class="contact-value">+7 924 626 56 75</div>
+                    </div>
+                </div>
+                <div class="contact-row">
+                    <div class="contact-icon star-icon">✦</div>
+                    <div>
+                        <div class="contact-label" data-i18n="footer.email_label">E-mail</div>
+                        <div class="contact-value">bmariyav2005@mail.ru</div>
+                    </div>
+                </div>
+                <div class="contact-row">
+                    <div class="contact-icon star-icon">✦</div>
+                    <div>
+                        <div class="contact-label" data-i18n="footer.vk_label">VK</div>
+                        <div class="contact-value">vk.ru/marrriya_18</div>
+                    </div>
+                </div>
+                <div class="contact-row">
+                    <div class="contact-icon star-icon">✦</div>
+                    <div>
+                        <div class="contact-label" data-i18n="footer.telegram_label">Telegram</div>
+                        <div class="contact-value">@marrriya18</div>
+                    </div>
+                </div>
 
-      <div class="lang-box">
-        <div class="lang-box-title">Языки</div>
-        <div class="lang-row"><span>Русский</span><span>родной</span></div>
-        <div class="lang-row"><span>Английский</span><span>B1-B2</span></div>
-        <div class="lang-row"><span>Итальянский</span><span>A1-A2</span></div>
-      </div>
+                <div class="lang-box">
+                    <div class="lang-box-title" data-i18n="footer.languages_title">Языки</div>
+                    <div class="lang-row"><span data-i18n="footer.lang_ru">Русский</span><span data-i18n="footer.lang_ru_level">родной</span></div>
+                    <div class="lang-row"><span data-i18n="footer.lang_en">Английский</span><span data-i18n="footer.lang_en_level">B1-B2</span></div>
+                    <div class="lang-row"><span data-i18n="footer.lang_it">Итальянский</span><span data-i18n="footer.lang_it_level">A1-A2</span></div>
+                </div>
+            </div>
+
+            <form class="footer-form" id="contactForm">
+                <input class="form-field" type="text" placeholder="Ваше имя" data-i18n-placeholder="footer.form_name" required>
+                <input class="form-field" type="email" placeholder="Ваш email" data-i18n-placeholder="footer.form_email" required>
+                <input class="form-field" type="text" placeholder="Тема проекта" data-i18n-placeholder="footer.form_subject">
+                <textarea class="form-field textarea" placeholder="Расскажите о вашем проекте..." data-i18n-placeholder="footer.form_message" required></textarea>
+                <button class="btn-submit" type="submit" data-i18n="footer.form_submit">Отправить сообщение</button>
+            </form>
+        </div>
     </div>
-
-    <form class="footer-form">
-      <input class="form-field" type="text" placeholder="Ваше имя">
-      <input class="form-field" type="email" placeholder="Ваш email">
-      <input class="form-field" type="text" placeholder="Тема проекта">
-      <textarea class="form-field textarea" placeholder="Расскажите о вашем проекте..."></textarea>
-      <button class="btn-submit" type="submit">Отправить сообщение</button>
-    </form>
-  </div>
 </footer>
 
+<script src="js/main.js"></script>
 </body>
 </html>
